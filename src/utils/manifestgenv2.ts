@@ -1,4 +1,4 @@
-import { readFile, writeFile, mkdir } from 'fs/promises'
+import { readFile, writeFile, mkdir, cp } from 'fs/promises'
 import { resolve, dirname } from 'path'
 
 const packagePath = resolve('package.json')
@@ -53,8 +53,10 @@ async function generateManifest() {
 
     await mkdir(dirname(manifestPath), { recursive: true })
     await writeFile(manifestPath, JSON.stringify(manifest, null, 2), 'utf-8')
-
     console.log(`manifest.json generated, version`, version)
+
+    await cp('public', 'dist', { recursive: true })
+    console.log('Copied public folder into dist')
 }
 
 generateManifest()

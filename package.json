@@ -10,7 +10,7 @@
         "@types/webextension-polyfill": "^0.12.4",
         "npm-run-all": "^4.1.5",
         "prettier": "^3.8.0",
-        "typescript": "^5.8.3",
+        "typescript": "^5.9.3",
         "web-ext": "^8.10.0",
         "webextension-polyfill": "^0.12.0"
     },
@@ -20,15 +20,13 @@
         "dev:v3": "bun run clean && bun build:manifestv3 && bun copy:public && bun copy:static && bun run build:bundle && bun webext:run",
         "build:watch": "bun build src/background.ts --outdir dist --watch",
         "webext:run": "web-ext run --source-dir=dist --watch-files=dist/background.js",
-        "build:v2": "bun run clean && bun run pretty && bun build:manifestv2 && bun copy:public && bun run build:bundle && bun run build:ext",
-        "build:v3": "bun run clean && bun run pretty && bun build:manifestv3 && bun copy:public && bun copy:static && bun run build:bundle && bun run build:ext",
+        "build:v2": "bun run clean && bun run pretty && bun build:manifestv2 && bun run build:bundle && bun run build:ts && bun run build:ext",
+        "build:v3": "bun run clean && bun run pretty && bun build:manifestv3 && bun run build:bundle && bun run build:ext",
         "clean": "rm -rf dist && rm -rf build",
         "build:ts": "bun build ./src/background.ts --outdir ./dist --minify",
         "build:ext": "web-ext build --source-dir=dist --artifacts-dir=build",
         "build:manifestv2": "bun run src/utils/manifestgenv2.ts",
         "build:manifestv3": "bun run src/utils/manifestgenv3.ts",
-        "build:bundle": "bun build src/utils/bundle.js --outdir dist --minify && bun build src/utils/content.ts --outdir dist --minify",
-        "copy:static": "cp -r static/. dist/",
-        "copy:public": "cp -r public/. dist/"
+        "build:bundle": "bun build src/utils/bundle.js --outdir dist --minify && bun build src/utils/content.ts --outdir dist --minify"
     }
 }
