@@ -1,17 +1,35 @@
+/* Main variables */
+html.cropix {
+    /* Colors */
+    --cropix-bg: #272727d1;
+    --cropix-bg-solid: #272727f1;
+    --cropix-bg-dark: #00000090;
+    --cropix-hover: #ffffff25;
+    --cropix-hover-active: #ffffff40;
+    --cropix-btn-weak: #ffffff20;
+
+    /* Effects */
+    --cropix-blur: blur(10px);
+    --cropix-shadow: inset 0 1px 2px #ffffff50, 0 2px 4px #00000030, 0 4px 8px #00000015;
+
+    /* Layout */
+    --cropix-radius: 8px;
+    --cropix-radius-lg: 10px;
+}
+
+/* Header Styles */
 html.cropix .app-layout__header--ywueY {
     height: 0px !important;
 }
 
 html.cropix .container--cq5XE.container--has-no-gutters--WqnNJ.header-content {
-    border-radius: 8px;
+    border-radius: var(--cropix-radius);
     width: calc(100% - var(--container-inline-padding) - var(--container-inline-padding)) !important;
     margin: 1.25rem var(--container-inline-padding) var(--container-inline-padding) var(--container-inline-padding);
-    background-color: #272727d1 !important;
-    backdrop-filter: blur(10px);
-    box-shadow:
-        inset 0 1px 2px #ffffff50,
-        0 2px 4px #00000030,
-        0 4px 8px #00000015 !important;
+    background-color: var(--cropix-bg) !important;
+    backdrop-filter: var(--cropix-blur);
+    box-shadow: var(--cropix-shadow) !important;
+    transition: all 150ms;
 }
 
 html.cropix .erc-sticky-header.state-sticky {
@@ -20,44 +38,12 @@ html.cropix .erc-sticky-header.state-sticky {
     position: fixed;
     inset-block-start: var(--initial-sticky-pos);
     padding-block-start: 0;
-    border-radius: 8px;
+    border-radius: var(--cropix-radius);
     width: calc(100% - var(--container-inline-padding) - var(--container-inline-padding)) !important;
     margin: 1.25rem var(--container-inline-padding) 0rem var(--container-inline-padding);
-    background-color: #272727d1 !important;
-    backdrop-filter: blur(10px);
-    box-shadow:
-        inset 0 1px 2px #ffffff50,
-        0 2px 4px #00000030,
-        0 4px 8px #00000015 !important;
-}
-
-html.cropix .container--cq5XE.container--has-no-gutters--WqnNJ.header-content {
-    transition: all 150ms;
-}
-
-html.cropix .video-player-spacer {
-    max-height: calc(100vh - 120px) !important;
-}
-
-html.cropix .button--xqVd0 {
-    border-radius: 8px;
-    box-shadow:
-        inset 0 1px 2px #ffffff50,
-        0 2px 4px #00000030,
-        0 4px 8px #00000015 !important;
-}
-
-html.cropix .button--xqVd0.button--is-type-one-weak--KLvCX,
-html.cropix .button--xqVd0.button--is-type-two-weak--VH7er {
-    background-color: #ffffff20;
-}
-
-html.cropix .erc-header-tile {
-    color: #fff !important;
-}
-
-html.cropix .text--is-regular--M4487 {
-    font-weight: 500;
+    background-color: var(--cropix-bg) !important;
+    backdrop-filter: var(--cropix-blur);
+    box-shadow: var(--cropix-shadow) !important;
 }
 
 html.cropix .erc-sticky-header {
@@ -75,6 +61,39 @@ html.cropix .search-field-wrapper {
     --container-inline-padding: 1.25rem;
 }
 
+html.cropix .erc-header-tile {
+    color: #fff !important;
+}
+
+html.cropix .erc-header-tile.state-active {
+    color: #fff;
+    background-color: var(--cropix-hover-active) !important;
+}
+
+/* Buttons & Controls */
+html.cropix .button--xqVd0 {
+    border-radius: var(--cropix-radius);
+    box-shadow: var(--cropix-shadow) !important;
+}
+
+html.cropix .button--xqVd0.button--is-type-one-weak--KLvCX,
+html.cropix .button--xqVd0.button--is-type-two-weak--VH7er {
+    background-color: var(--cropix-btn-weak);
+}
+
+html.cropix .text--is-regular--M4487 {
+    font-weight: 500;
+}
+
+/* Layout & Spacing */
+html.cropix .video-player-spacer {
+    max-height: calc(100vh - 120px) !important;
+}
+
+html.cropix .page-wrapper--has-padding-top--h1N8H {
+    padding-block-start: 6rem;
+}
+
 html.cropix .erc-search-page .search-page-content {
     padding-block-start: 6rem;
 }
@@ -87,7 +106,13 @@ html.cropix .erc-account .page-wrapper {
     padding-block-start: 7rem;
 }
 
+html.cropix .hero-carousel__content-wrapper--njtFs {
+    margin-top: 80px;
+}
+
+/* Responsive Breakpoints */
 @media (min-width: 35.5em) {
+
     html.cropix .erc-sticky-header.state-sticky,
     html.cropix .search-field-wrapper {
         --container-inline-padding: 2.5rem !important;
@@ -141,6 +166,7 @@ html.cropix .erc-account .page-wrapper {
 }
 
 @media (min-width: 64em) {
+
     html.cropix .erc-sticky-header.state-sticky,
     html.cropix .search-field-wrapper {
         --container-inline-padding: 4rem !important;
@@ -156,55 +182,34 @@ html.cropix .erc-account .page-wrapper {
 }
 
 @media (min-width: 107.5em) {
+
     html.cropix .erc-sticky-header.state-sticky,
     html.cropix .search-field-wrapper {
         --container-inline-padding: 5rem !important;
     }
 }
 
+/* Hover States */
 @media (hover: hover) {
+
     html.cropix .erc-header-tile:focus,
-    .erc-header-tile:hover {
-        color: #fff;
-        background-color: #ffffff25 !important;
-    }
-
+    html.cropix .erc-header-tile:hover,
     html.cropix .browse-menu-item__link--JmxT8:focus,
-    .browse-menu-item__link--JmxT8:hover {
-        color: #fff;
-        background-color: #ffffff25 !important;
-    }
-
+    html.cropix .browse-menu-item__link--JmxT8:hover,
     html.cropix .browse-submenu-item__link--SSQp9:focus,
-    .browse-submenu-item__link--SSQp9:hover {
-        color: #fff;
-        background-color: #ffffff25 !important;
-    }
-
+    html.cropix .browse-submenu-item__link--SSQp9:hover,
     html.cropix .user-menu-nav-item---CLa2:focus,
-    .user-menu-nav-item---CLa2:hover {
-        color: #fff;
-        background-color: #ffffff25 !important;
-    }
-
+    html.cropix .user-menu-nav-item---CLa2:hover,
     html.cropix .erc-menu-item-title:focus,
-    .erc-menu-item-title:hover {
-        color: #fff;
-        background-color: #ffffff25 !important;
-    }
-
+    html.cropix .erc-menu-item-title:hover,
     html.cropix .user-menu-account-item--is-interactive--XiPoy:focus,
-    .user-menu-account-item--is-interactive--XiPoy:hover {
-        color: #fff;
-        background-color: #ffffff25 !important;
-    }
-
+    html.cropix .user-menu-account-item--is-interactive--XiPoy:hover,
     html.cropix .dropdown-text-option---72eL:not(.dropdown-text-option--is-disabled--xhPA1):focus,
-    .dropdown-text-option---72eL:not(.dropdown-text-option--is-disabled--xhPA1):hover,
-    .select-content__option--gq8Uo:focus,
-    .select-content__option--gq8Uo:hover {
+    html.cropix .dropdown-text-option---72eL:not(.dropdown-text-option--is-disabled--xhPA1):hover,
+    html.cropix .select-content__option--gq8Uo:focus,
+    html.cropix .select-content__option--gq8Uo:hover {
         color: #fff;
-        background-color: #ffffff25 !important;
+        background-color: var(--cropix-hover) !important;
     }
 
     html.cropix .card:hover .playable-card-more-options--uBSQV,
@@ -221,39 +226,24 @@ html.cropix .playable-card-more-options--uBSQV {
     bottom: 0;
 }
 
-html.cropix .erc-header-tile.state-active {
+/* Dropdown Menus */
+html.cropix .browse-menu--71A2V,
+html.cropix .user-menu--ZzPZG,
+html.cropix .erc-news-menu-dropdown,
+html.cropix .dropdown-content--5b5F7 {
+    background-color: var(--cropix-bg-solid) !important;
+    border-radius: var(--cropix-radius);
+    box-shadow: var(--cropix-shadow) !important;
+    margin-top: 10px;
+}
+
+html.cropix .dropdown-content--5b5F7 {
     color: #fff;
-    background-color: #ffffff40 !important;
 }
 
-html.cropix .browse-menu--71A2V {
-    background-color: #272727f1 !important;
-    border-radius: 8px;
-    box-shadow:
-        inset 0 1px 2px #ffffff50,
-        0 2px 4px #00000030,
-        0 4px 8px #00000015 !important;
-    margin-top: 10px;
-}
-
-html.cropix .user-menu--ZzPZG {
-    background-color: #272727f1 !important;
-    border-radius: 8px;
-    box-shadow:
-        inset 0 1px 2px #ffffff50,
-        0 2px 4px #00000030,
-        0 4px 8px #00000015 !important;
-    margin-top: 10px;
-}
-
-html.cropix .erc-news-menu-dropdown {
-    background-color: #272727f1 !important;
-    border-radius: 8px;
-    box-shadow:
-        inset 0 1px 2px #ffffff50,
-        0 2px 4px #00000030,
-        0 4px 8px #00000015 !important;
-    margin-top: 10px;
+html.cropix .dropdown-content__children--HW28H {
+    padding-block-start: 0 !important;
+    padding-block: 0 !important;
 }
 
 html.cropix .user-menu-section--is-sticky--h7FI8 {
@@ -264,66 +254,38 @@ html.cropix .user-menu-section--is-sticky--h7FI8::before {
     background-image: none !important;
 }
 
-html.cropix .page-wrapper--has-padding-top--h1N8H {
-    padding-block-start: 6rem;
-}
-
-html.cropix .hero-carousel__content-wrapper--njtFs {
-    margin-top: 80px;
-}
-
-html.cropix hero-carousel__page-pill--NDpl- {
-    box-shadow:
-        inset 0 1px 2px #ffffff50,
-        0 2px 4px #00000030,
-        0 4px 8px #00000015 !important;
-}
-
-html.cropix .hero-carousel__page-loader--iHKEw {
-    box-shadow:
-        inset 0 1px 2px #ffffff50,
-        0 2px 4px #00000030,
-        0 4px 8px #00000015 !important;
-}
-
+/* Search */
 html.cropix .erc-search-page .search-field-wrapper {
     inset-block-start: calc(var(--cx-header-height) + 2rem) !important;
-    border-radius: 8px;
+    border-radius: var(--cropix-radius);
     width: calc(100% - var(--container-inline-padding) - var(--container-inline-padding)) !important;
     margin: 1.25rem var(--container-inline-padding) 0rem var(--container-inline-padding);
-    background-color: #272727d1 !important;
-    backdrop-filter: blur(10px);
-    box-shadow:
-        inset 0 1px 2px #ffffff50,
-        0 2px 4px #00000030,
-        0 4px 8px #00000015 !important;
+    background-color: var(--cropix-bg) !important;
+    backdrop-filter: var(--cropix-blur);
+    box-shadow: var(--cropix-shadow) !important;
 }
 
-html.cropix .content-image--is-sized--SOai1 {
-    border-radius: 10px;
+/* Cards & Content */
+html.cropix .content-image--is-sized--SOai1,
+html.cropix .playable-thumbnail--is-sized--ttnK8 {
+    border-radius: var(--cropix-radius-lg);
     overflow: hidden;
     height: 100%;
 }
 
+html.cropix .browse-card-hover__content--aD-bn,
+html.cropix .playable-card-hover--preaw {
+    border-radius: var(--cropix-radius);
+    background-color: var(--cropix-bg) !important;
+    backdrop-filter: var(--cropix-blur);
+    box-shadow: var(--cropix-shadow) !important;
+}
+
 html.cropix .browse-card-hover__content--aD-bn {
-    border-radius: 8px;
-    background-color: #272727d1 !important;
-    backdrop-filter: blur(10px);
-    box-shadow:
-        inset 0 1px 2px #ffffff50,
-        0 2px 4px #00000030,
-        0 4px 8px #00000015 !important;
     padding: 0.5rem;
 }
 
 html.cropix .playable-card-hover--preaw {
-    border-radius: 8px;
-    background-color: #272727d1 !important;
-    backdrop-filter: blur(10px);
-    box-shadow:
-        inset 0 1px 2px #ffffff50,
-        0 2px 4px #00000030,
-        0 4px 8px #00000015 !important;
     padding: 0.75rem;
 }
 
@@ -340,8 +302,12 @@ html.cropix .playable-card-hover__secondary-title-link--Exdsq {
     margin-block-end: 0 !important;
 }
 
-html.cropix .browse-card--esJdT {
+html.cropix .browse-card--esJdT,
+html.cropix .card {
     height: 100%;
+}
+
+html.cropix .browse-card--esJdT {
     display: flex;
     flex-direction: column;
 }
@@ -353,15 +319,22 @@ html.cropix .browse-card__body--yGjzX {
     justify-content: space-between;
 }
 
+html.cropix .playable-card--GnRbX {
+    display: flex !important;
+    height: 100% !important;
+}
+
+html.cropix .content-image__figure-wrapper--TRCnl {
+    height: 100% !important;
+}
+
+/* Player & Thumbnails */
 html.cropix .playable-thumbnail--HKMt2 .playable-thumbnail__duration--p-Ldq {
-    border-radius: 8px;
-    background-color: #00000090 !important;
-    backdrop-filter: blur(10px);
+    border-radius: var(--cropix-radius);
+    background-color: var(--cropix-bg-dark) !important;
+    backdrop-filter: var(--cropix-blur);
     padding: 3px 6px !important;
-    box-shadow:
-        inset 0 1px 2px #ffffff50,
-        0 2px 4px #00000030,
-        0 4px 8px #00000015 !important;
+    box-shadow: var(--cropix-shadow) !important;
     inset-block-end: 0.5rem !important;
     inset-inline-end: 0.5rem !important;
 }
@@ -381,61 +354,25 @@ html.cropix .play-media-icon--is-scalable--ZPGW9 {
     width: 2rem !important;
 }
 
-html.cropix .play-media-icon--CpSht {
-    background-color: #00000090 !important;
-    backdrop-filter: blur(10px);
-    box-shadow:
-        inset 0 1px 2px #ffffff50,
-        0 2px 4px #00000030,
-        0 4px 8px #00000015 !important;
-    padding: 0.25rem;
-    border-radius: 8px !important;
-}
-
-html.cropix .playable-thumbnail--is-sized--ttnK8 {
-    border-radius: 10px;
-    overflow: hidden;
-    height: 100%;
-}
-
+html.cropix .play-media-icon--CpSht,
 html.cropix .progress-bar--4cDQR {
-    background-color: #00000090 !important;
-    backdrop-filter: blur(10px);
-    box-shadow:
-        inset 0 1px 2px #ffffff50,
-        0 2px 4px #00000030,
-        0 4px 8px #00000015 !important;
+    background-color: var(--cropix-bg-dark) !important;
+    backdrop-filter: var(--cropix-blur);
+    box-shadow: var(--cropix-shadow) !important;
 }
 
-html.cropix .card {
-    height: 100%;
+html.cropix .play-media-icon--CpSht {
+    padding: 0.25rem;
+    border-radius: var(--cropix-radius) !important;
 }
 
-html.cropix .playable-card--GnRbX {
-    display: flex !important;
-    height: 100% !important;
+/* Carousel */
+html.cropix .hero-carousel__page-pill--NDpl-,
+html.cropix .hero-carousel__page-loader--iHKEw {
+    box-shadow: var(--cropix-shadow) !important;
 }
 
-html.cropix .content-image__figure-wrapper--TRCnl {
-    height: 100% !important;
-}
-
-html.cropix .dropdown-content--5b5F7 {
-    background-color: #272727f1 !important;
-    border-radius: 8px;
-    box-shadow:
-        inset 0 1px 2px #ffffff50,
-        0 2px 4px #00000030,
-        0 4px 8px #00000015 !important;
-    margin-top: 10px;
-    color: #fff;
-}
-
-html.cropix .dropdown-content__children--HW28H {
-    padding-block-start: 0 !important;
-    padding-block: 0 !important;
-}
-
+/* Utilities */
 html.cropix div[data-id]:has(.container--cq5XE.container--is-contained--MuvQK) {
     display: none !important;
 }

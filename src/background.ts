@@ -4,14 +4,10 @@ import browser from 'webextension-polyfill'
 browser.webRequest.onBeforeRequest.addListener(
     (details) => {
         const filter = browser.webRequest.filterResponseData(details.requestId)
-        const decoder = new TextDecoder('utf-8')
         const encoder = new TextEncoder()
 
-        let data = ''
-
-        filter.ondata = (event) => {
-            data += decoder.decode(event.data, { stream: true })
-        }
+        // Consume incoming data chunks (required by filterResponseData API)
+        filter.ondata = () => {}
 
         filter.onstop = async () => {
             try {
