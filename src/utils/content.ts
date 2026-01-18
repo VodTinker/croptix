@@ -106,11 +106,13 @@ function startObserverMain() {
     isMonitoringMain = true
 }
 
-// Observer Iframe - throttled with cached elements
+// Observer Iframe
 function startObserverIframe() {
     if (isMonitoringIframe || isTop) return
 
-    const handleMutation = throttle(() => {
+    const monitor = new MutationObserver(() => {
+        if (document.getElementById('vilos-pip_button')) return
+
         const video = document.getElementById('player0') as HTMLVideoElement | null
         if (!video) return
         const controlsContainer = document.getElementById('vilosControlsContainer') as HTMLElement | null
@@ -118,9 +120,7 @@ function startObserverIframe() {
 
         pipControl(controlsContainer, video)
         theaterControl(controlsContainer, video)
-    }, 100)
-
-    const monitor = new MutationObserver(handleMutation)
+    })
 
     monitor.observe(document.body, {
         childList: true,
